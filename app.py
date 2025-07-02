@@ -15,8 +15,14 @@ sdk = mercadopago.SDK("YOUR_ACCESS_TOKEN")
 
 @app.route('/')
 def index():
-    products = load_products()  # load_products() should return a list of product dicts
+    products = load_products()
     return render_template('index.html', products=products)
+
+@app.route('/product/<int:product_id>')
+def product(product_id):
+    products = load_products()
+    product = next((p for p in products if p['id'] == product_id), None)
+    return render_template('product.html', product=product)
 
 @app.route('/add_to_cart/<int:product_id>')
 def add_to_cart(product_id):
@@ -54,45 +60,6 @@ def checkout():
 def clear_cart():
     session.pop('cart', None)
     return redirect(url_for('index'))
-
-@app.route('/product/<int:product_id>')
-def product(product_id):
-    with open("data/products.json") as f:
-        products = json.load(f)
-    product = next((p for p in products if p["id"] == product_id), None)
-    if not product:
-        return "Product not found", 404
-    return render_template("product.html", product=product)
-
-
-@app.route('/add_to_cart_with_options/<int:product_id>', methods=["POST"])
-def add_to_cart_with_options(product_id):
-    with open("data/products.json") as f:
-        products = json.load(f)
-    product = next((p for p in products if p["id"] == product_id), None)
-    if not product:
-        return "Product not found", 404
-
-    size = request.form.get("size")
-    color = request.form.get("color")
-    quantity = int(request.form.get("quantity"))
-
-    cart_item = {
-        "id": product["id"],
-        "name": product["name"],
-        "price": product["price"],
-        "size": size,
-        "color": color,
-        "quantity": quantity
-    }
-
-    if "cart" not in session:
-        session["cart"] = []
-    session["cart"].append(cart_item)
-    session.modified = True
-
-    return redirect(url_for("cart"))
-
 
 if __name__ == '__main__':
     app.run(debug=True)

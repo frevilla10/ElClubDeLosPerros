@@ -4,13 +4,15 @@
     "name": "Dog Hoodie",
     "description": "Cozy hoodie for your dog.",
     "price": 1500,
-    "image_url": "/static/dog1.jpg"
+    "image_url": "/static/dog1.jpg",
+    "category":"Remeras"
   },
   {
     "id": 2,
     "name": "Cat T-Shirt",
     "description": "Cool t-shirt with a cat print.",
     "price": 1200,
-    "image_url": "/static/dog2.jpg"
+    "image_url": "/static/dog2.jpg",
+    "category":"Tote Bag"
   }
 ]

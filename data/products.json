@@ -1,26 +1,38 @@
 [
   {
     "id": 1,
-    "name": "Dog Hoodie",
-    "description": "Cozy hoodie for your dog.",
-    "price": 1500,
-    "image_url": "/static/dog1.jpg",
+    "name": "Remera Orejas Ovejero Boxy",
+    "description": "Inspirada en mi amigo Bolt y sus orejas grandes para esuchar mejor",
+    "price": 27000,
+    "image_url": "/static/Remera_bolt_blanca.jpeg",
     "image_urls": [
-      "/static/dog1.jpg",
-      "/static/dog1.jpg",
-      "/static/dog1.jpg"],
+      "/static/Remera_bolt_blanca.jpeg",
+      "/static/Orejas_bolt_blanca_boxy_1.jpg"
+    ],
     "category":"Remeras"
   },
   {
     "id": 2,
-    "name": "Cat T-Shirt",
-    "description": "Cool t-shirt with a cat print.",
-    "price": 1200,
-    "image_url": "/static/dog2.jpg",
+    "name": "Remera Salchi Boxy",
+    "description": "Perro Salchicha Gordo Bachicha",
+    "price": 27000,
+    "image_url": "/static/Remera_salchi_beige.jpeg",
     "image_urls": [
-      "/static/dog2.jpg",
-      "/static/dog2.jpg",
-      "/static/dog2.jpg"],
-    "category":"Tote Bag"
+      "/static/Remera_salchi_beige.jpeg",
+      "/static/Remera_boxy_mararon_salchi.jpeg"
+    ],
+    "category":"Remeras"
+  },
+
+  {
+    "id": 3,
+    "name": "Remera Doberman Boxy",
+    "description": "Muy cool para ser real",
+    "price": 27000,
+    "image_url": "/static/Remera_doberman_negra.jpeg",
+    "image_urls": [
+      "/static/Remera_doberman_negra.jpeg"
+    ],
+    "category":"Remeras"
   }
 ]

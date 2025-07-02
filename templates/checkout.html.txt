@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Checkout</h1>
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<div id="wallet_container"></div>
+<script>
+  const mp = new MercadoPago('{{ preference_id }}', {
+    locale: 'es-AR'
+  });
+
+  mp.checkout({
+    preference: {
+      id: '{{ preference_id }}'
+    },
+    render: {
+      container: '#wallet_container',
+      label: 'Pay',
+    }
+  });
+</script>
+{% endblock %}

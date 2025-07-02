@@ -7,9 +7,9 @@
     <!-- Bootstrap Carousel -->
     <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        {% for i, img_url in enumerate(product.image_urls) %}
-        <div class="carousel-item {% if i == 0 %}active{% endif %}">
-        <img src="{{ img_url }}" class="d-block w-100" alt="{{ product.name }} Image {{ i + 1 }}">
+        {% for img_url in product.image_urls %}
+        <div class="carousel-item {% if loop.first %}active{% endif %}">
+        <img src="{{ img_url }}" class="d-block w-100" alt="{{ product.name }} Image {{ loop.index }}">
         </div>
         {% endfor %}
     </div>

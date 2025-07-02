@@ -3,7 +3,27 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-6">
-      <img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-fluid">
+
+    <!-- Bootstrap Carousel -->
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for i, img_url in enumerate(product.image_urls) %}
+        <div class="carousel-item {% if i == 0 %}active{% endif %}">
+        <img src="{{ img_url }}" class="d-block w-100" alt="{{ product.name }} Image {{ i + 1 }}">
+        </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+
+
     </div>
     <div class="col-md-6">
       <h2>{{ product.name }}</h2>

@@ -18,12 +18,6 @@ def index():
     products = load_products()
     return render_template('index.html', products=products)
 
-@app.route('/product/<int:product_id>')
-def product(product_id):
-    products = load_products()
-    product = next((p for p in products if p['id'] == product_id), None)
-    return render_template('product.html', product=product)
-
 @app.route('/add_to_cart/<int:product_id>')
 def add_to_cart(product_id):
     cart = session.get('cart', [])

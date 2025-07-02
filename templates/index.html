@@ -1,19 +1,33 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container mt-4">
+  <ul class="nav nav-pills mb-4 justify-content-center" id="categoryTabs">
+    <li class="nav-item">
+      <a class="nav-link {% if not selected_category or selected_category == 'Remeras' %}active{% endif %}" href="{{ url_for('index', category='Remeras') }}">Remeras</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {% if selected_category == 'Chombas' %}active{% endif %}" href="{{ url_for('index', category='Chombas') }}">Chombas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {% if selected_category == 'Tote Bag' %}active{% endif %}" href="{{ url_for('index', category='Tote Bag') }}">Tote Bags</a>
+    </li>
+  </ul>
+
   <div class="row">
     {% for product in products %}
-    <div class="col-md-4 mb-3">
-      <div class="card">
-        <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">{{ product.description }}</p>
-          <p><strong>${{ product.price }}</strong></p>
-          <a href="{{ url_for('product', product_id=product.id) }}" class="btn btn-outline-primary">Ver producto</a>
+      {% if not selected_category or product.category == selected_category %}
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p><strong>${{ product.price }}</strong></p>
+            <a href="{{ url_for('product', product_id=product.id) }}" class="btn btn-outline-primary">Ver producto</a>
+          </div>
         </div>
       </div>
-    </div>
+      {% endif %}
     {% endfor %}
   </div>
 </div>

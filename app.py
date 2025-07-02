@@ -15,7 +15,7 @@ sdk = mercadopago.SDK("YOUR_ACCESS_TOKEN")
 
 @app.route('/')
 def index():
-    products = load_products()
+    products = load_products()  # load_products() should return a list of product dicts
     return render_template('index.html', products=products)
 
 @app.route('/add_to_cart/<int:product_id>')
